@@ -68,7 +68,7 @@ class OPTICS(ClusterMixin, BaseEstimator):
         should take two arrays as input and return one value indicating the
         distance between them. This works for Scipy's metrics, but is less
         efficient than passing the metric name as a string. If metric is
-        "precomputed", X is assumed to be a distance matrix and must be square.
+        "precomputed", 'X' is assumed to be a distance matrix and must be square.
 
         Valid values for metric are:
 
@@ -124,8 +124,8 @@ class OPTICS(ClusterMixin, BaseEstimator):
     algorithm : {'auto', 'ball_tree', 'kd_tree', 'brute'}, default='auto'
         Algorithm used to compute the nearest neighbors:
 
-        - 'ball_tree' will use :class:`BallTree`
-        - 'kd_tree' will use :class:`KDTree`
+        - 'ball_tree' will use :class:`BallTree`.
+        - 'kd_tree' will use :class:`KDTree`.
         - 'brute' will use a brute-force search.
         - 'auto' will attempt to decide the most appropriate algorithm
           based on the values passed to :meth:`fit` method. (default)
@@ -673,13 +673,13 @@ def cluster_optics_xi(
     Parameters
     ----------
     reachability : ndarray of shape (n_samples,)
-        Reachability distances calculated by OPTICS (`reachability_`)
+        Reachability distances calculated by OPTICS (`reachability_`).
 
     predecessor : ndarray of shape (n_samples,)
         Predecessors calculated by OPTICS.
 
     ordering : ndarray of shape (n_samples,)
-        OPTICS ordered point indices (`ordering_`)
+        OPTICS ordered point indices (`ordering_`).
 
     min_samples : int > 1 or float between 0 and 1
         The same as the min_samples given to OPTICS. Up and down steep regions
@@ -699,7 +699,7 @@ def cluster_optics_xi(
         successor being at most 1-xi.
 
     predecessor_correction : bool, default=True
-        Correct clusters based on the calculated predecessors.
+        Correct clusters based on the calculated ``predecessors``.
 
     Returns
     -------
@@ -741,7 +741,7 @@ def cluster_optics_xi(
 def _extend_region(steep_point, xward_point, start, min_samples):
     """Extend the area until it's maximal.
 
-    It's the same function for both upward and downward reagions, depending on
+    It's the same function for both upward and downward regions, depending on
     the given input parameters. Assuming:
 
         - steep_{upward/downward}: bool array indicating whether a point is a
@@ -749,7 +749,7 @@ def _extend_region(steep_point, xward_point, start, min_samples):
         - upward/downward: bool array indicating whether a point is
           upward/downward;
 
-    To extend an upward reagion, ``steep_point=steep_upward`` and
+    To extend an upward region, ``steep_point=steep_upward`` and
     ``xward_point=downward`` are expected, and to extend a downward region,
     ``steep_point=steep_downward`` and ``xward_point=upward``.
 
@@ -1000,7 +1000,7 @@ def _extract_xi_labels(ordering, clusters):
     Parameters
     ----------
     ordering : array-like of shape (n_samples,)
-        The ordering of points calculated by OPTICS
+        The ordering of points calculated by OPTICS.
 
     clusters : array-like of shape (n_clusters, 2)
         List of clusters i.e. (start, end) tuples,
